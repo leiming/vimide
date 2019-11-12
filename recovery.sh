@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/usr/bin/env bash
 source $(dirname $0)/config.sh
 
 # BACKUP_DIR=$HOME/backup/vim_config_bk
@@ -30,15 +30,15 @@ if [[ ${array[$selectedNum]} == "" ]]; then
     echo "ERROR! 输入序列不合法，请重新执行"
     exit 1
 fi
-   
+
 bk_vim=${array[$selectedNum]}
 
 cur_bk_path=$BACKUP_DIR/$bk_vim
 
 if [[ -d $cur_bk_path/.vim || -f $cur_bk_path/.vim ]]; then
-   rm -rf ~/.vim
-   cp -R $cur_bk_path/.vim ~
-   echo "~/.vim/ 已恢复"
+    rm -rf ~/.vim
+    cp -R $cur_bk_path/.vim ~
+    echo "~/.vim/ 已恢复"
 fi
 
 if [[ -e $cur_bk_path/.vimrc ]]; then
@@ -57,6 +57,12 @@ if [[ -e $cur_bk_path/.bash_profile ]]; then
     rm -rf ~/.bash_profile
     cp -P $cur_bk_path/.bash_profile ~
     echo "~/.bash_profile 已恢复"
+fi
+
+if [[ -e $cur_bk_path/.zshrc ]]; then
+    rm -rf ~/.zshrc
+    cp -P $cur_bk_path/.zshrc ~
+    echo "~/.zshrc 已恢复"
 fi
 
 read -p "VJ已经还原，请问需要立即生效吗? [ctrl+c]取消：(y/n) y:" isSource

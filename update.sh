@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # BASEDIR=$(dirname $0)
 BASEDIR=$(cd $(dirname $BASH_SOURCE);pwd)
@@ -32,15 +32,30 @@ fi
 echo -e "---- 更新.vim ----\n"
 bash $BASEDIR/catvimdir.sh
 
-echo -e "---- 更新.bash_profile ----\n"
-sed -i -e '/_vj_bashrc/d' ~/.bash_profile
-sed -i -e '/alias[ ]*vj/d' ~/.bash_profile
+if [[ -e ~/.bash_profile ]]; then
+    echo -e "---- 更新.bash_profile ----\n"
+    sed -i -e '/_vj_bashrc/d' ~/.bash_profile
+    sed -i -e '/alias[ ]*vj/d' ~/.bash_profile
 
-echo -e "alias vjbackup=\"bash $BASEDIR/backup.sh\""      >> ~/.bash_profile
-echo -e "alias vjrecovery=\"bash $BASEDIR/recovery.sh\""  >> ~/.bash_profile
-echo -e "alias vjupdate=\"bash $BASEDIR/update.sh\""      >> ~/.bash_profile
-echo -e "alias vj=\"vim '+call VjOpen()'\""               >> ~/.bash_profile
-echo -e "source $BASEDIR/_vj_bashrc"                      >> ~/.bash_profile
+    echo -e "alias vjbackup=\"bash $BASEDIR/backup.sh\""      >> ~/.bash_profile
+    echo -e "alias vjrecovery=\"bash $BASEDIR/recovery.sh\""  >> ~/.bash_profile
+    echo -e "alias vjupdate=\"bash $BASEDIR/update.sh\""      >> ~/.bash_profile
+    echo -e "alias vj=\"vim '+call VjOpen()'\""               >> ~/.bash_profile
+    echo -e "source $BASEDIR/_vj_bashrc"                      >> ~/.bash_profile
+fi
+
+if [[ -e ~/.zshrc ]]; then
+    echo -e "---- 更新.zshrc ----\n"
+    sed -i -e '/_vj_bashrc/d' ~/.zshrc
+    sed -i -e '/alias[ ]*vj/d' ~/.zshrc
+
+    echo -e "alias vjbackup=\"bash $BASEDIR/backup.sh\""      >> ~/.zshrc
+    echo -e "alias vjrecovery=\"bash $BASEDIR/recovery.sh\""  >> ~/.zshrc
+    echo -e "alias vjupdate=\"bash $BASEDIR/update.sh\""      >> ~/.zshrc
+    echo -e "alias vj=\"vim '+call VjOpen()'\""               >> ~/.zshrc
+    echo -e "source $BASEDIR/_vj_bashrc"                      >> ~/.zshrc
+fi
+
 
 read -p "VJ已经更新完成，请问需要立即生效吗？（否则将在下次登录时生效）[ctrl+c]取消(y/n) y:" isSource
 case $isSource in

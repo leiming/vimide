@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source $(dirname $0)/config.sh
 BASEDIR=$(cd $(dirname $BASH_SOURCE);pwd)
@@ -23,20 +23,14 @@ if [[ ! ~/.vim/team_bundle -ef "$TEAM_BUNDLE_DIR" ]]; then
     ln -s $TEAM_BUNDLE_DIR ~/.vim/team_bundle
 fi
 
-if [[ ! -r  ~/.vim/team_bundle/Vundle.vim/ ]]; then
-    echo -e "---- 更新 ~/.vim/team_bundle/Vundle.vim ----\n"
-    git clone https://github.com/leiming/Vundle.vim.git ~/.vim/team_bundle/Vundle.vim/
+if [[ ! -r  ~/.vim/autoload/plug.vim ]]; then
+    echo -e "---- 更新 ~/.vim/autoload/plug.vim ----\n"
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
+# Remove pylon_ide due to being changed repo.
 
-if [[ ! -r  ~/.vim/team_bundle/pylon_ide/ ]]; then
-    echo -e "---- 更新 ~/.vim/team_bundle/pylon_ide ----\n"
-    git clone https://bitbucket.org/gameteam360/pylon_ide.git ~/.vim/team_bundle/pylon_ide/
-fi
-
-
-# todo: 更新editorconfig
-rm -rf ~/.vim/.editorconfig
 if [[ ! -r ~/.editorconfig ]]; then
     echo -e "---- 生成 ~/.vim/.editorconfig 文件 ----\n"
     cp -f $BASEDIR/.editorconfig  ~/

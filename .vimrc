@@ -1,12 +1,9 @@
 set nocompatible
-syntax enable
-" --- configure Vundle ---
-filetype on
-filetype off
+" --- configure https://github.com/junegunn/vim-plug ---
 
-set rtp+=~/.vim/team_bundle/Vundle.vim/
 
-call vundle#rc()
+let team_bundle_dir=expand('~/.vim/team_bundle')
+call plug#begin('~/.vim/team_bundle')
 
 " 团队vimrc文件根目录
 let VIMIDE_DIR=expand("<sfile>:p:h")
@@ -18,8 +15,6 @@ endif
 if filereadable(expand(VIMIDE_DIR."/.vimrc.local"))
     exec 'source '.VIMIDE_DIR.'/.vimrc.local'
 endif
-
-filetype plugin indent on
 
 " --- END configure Vundle ---
 
@@ -98,6 +93,6 @@ scriptencoding utf-8
 set errorformat=%m\ in\ %f\ on\ line\ %l
 
 " 配色Vim为256
-set t_Co=256
-set bg=dark
-colorscheme default
+" set t_Co=256
+" set bg=dark
+" colorscheme default

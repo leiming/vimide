@@ -2,6 +2,15 @@
 
 VimIDE 是一款支持团队协同的集成化开发环境。与同类产品相比，其最大特色在于支持一次安装/部署/更新，开发机所有用户均无缝接入最新版，并支持了个人与团队的配置/插件完全共享与独立的定制化操作。
 
+### Update on 2019.11.11
+
+- 支持最新版的 VIM (Vi IMproved 8.1)
+- 更新 Pylon 插件，修正新版 Vim 报错；
+- 兼容 Bash 与 Zsh （Oh My Zsh）；
+- 更换插件管理工具 `Vundle.vim` 为 `vim-plug`，仍支持团队统一配置更新，一键发布
+- 移除 UnPlug 指令；
+- 新增 Rust 语言支持，移除不维护的插件；
+
 ## 本离线版特色
 
 - 支持部署本机 Vim 除 rigger-ng 外全部功能，给予开发人员本地线上体验一致的 IDE 环境；
@@ -12,8 +21,8 @@ VimIDE 是一款支持团队协同的集成化开发环境。与同类产品相�
 
 > 与其他离线 Vim 配置相比，本环境特色在于：完整的分离了公共插件和个人插件的部署方式，并保留了 VJ 特有的备份 / 还原 / 更新功能， 保障了 VJ 开发的独立与安全性。
 
-
 ### 1、下载配置文件
+
 将 VJ 配置文件下载到任意「有权限的」文件夹下：
 
 ```bash
@@ -31,8 +40,8 @@ source update.sh
 # 需要本机 sudo 密码建立 /var/local/team_bundle/ 路径
 ```
 
-### 3、安装VJ插件
+### 3、安装 VJ 插件
 
 ```bash
-vim +BundleInstall +BundleClean! +qa
+vim +PlugInstall +PlugClean! +qa
 ```

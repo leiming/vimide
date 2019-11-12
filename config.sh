@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # VJ版本号
-export VJ_VERSION=V0.0.4
+export VJ_VERSION=V0.0.5
 # Vim备份目录
 export BACKUP_DIR=$HOME/backup/vim_config_bk
 # 旧版vimrc文件

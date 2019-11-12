@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ -n "$1" ]]; then
     IPFILE=$1
@@ -9,7 +9,7 @@ fi
 BASEDIR=$(cd $(dirname $BASH_SOURCE);pwd)
 source $BASEDIR/../config.sh
 if [[ -z "$2" ]]; then
-   SOURCE_DIR=$CURRENT_VIMIDE
+    SOURCE_DIR=$CURRENT_VIMIDE
 elif [[ ! -d "$2" ]]; then
     echo "路径无效或不可读"
     return 0
