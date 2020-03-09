@@ -25,6 +25,5 @@
 "
 "  以上内容请勿修改，以免更新时丢失。使用中如有任何问题可随时联系管理员，谢谢配合。
 "  -------- GAME_TEAM_VJ Version 0.0.4 ---------
-call plug#begin('~/.vim/plugged')
 " Plug 'tpope/vim-rails'
 call plug#end()
